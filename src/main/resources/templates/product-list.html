@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Produits</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            margin: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #4A00E0;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #6A11CB;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #2575FC;
+        }
+
+        button {
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #2575FC, #6A11CB);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Liste des Produits</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Référence</th>
+        <th>Nom</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.ref}"></td>
+        <td th:text="${product.name}"></td>
+    </tr>
+</table>
+
+<h2>Ajouter un Produit</h2>
+<form action="/addProduct" method="post">
+    <label>Référence:</label>
+    <input type="text" name="ref" required> <br>
+    <label>Nom:</label>
+    <input type="text" name="name" required> <br>
+    <button type="submit">Ajouter</button>
+</form>
+
+</body>
+</html>
