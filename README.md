@@ -64,7 +64,7 @@ Base de données H2 pour stocker temporairement des informations
 
 Page product.html pour lister les produits (protégée par Keycloak)
 
-Gestion des produits avec :
+- Gestion des produits avec :
 
 ProductDto
 
